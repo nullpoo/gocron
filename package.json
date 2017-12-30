@@ -1,0 +1,16 @@
+{
+  "name": "gocron",
+  "version": "1.0.0",
+  "description": "---",
+  "main": "app/index",
+  "scripts": {
+    "start": "node --experimental-modules app/index.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^1.7.3",
+    "query-string": "^5.0.1"
+  }
+}
