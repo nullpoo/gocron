@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>gocron - reservation</title>
+</head>
+<body>
+<section>
+  <h1>gocron - reservation</h1>
+  <div>
+
+    <form method="post" action="/reservation">
+      <label for="date">Date</label> <input type="text" name="date" id="date" value="<%= date %>" />
+      <label for="time">Time</label> <input type="text" name="time" id="time" value="<%= time %>" />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</section>
+</body>
+</html>

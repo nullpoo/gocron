@@ -1,5 +1,6 @@
 import { scheduleChecker } from './schedule_checker';
 import { notifyForIfttt } from './notifier';
+import { initialize } from './server';
 
 const mainProcess = async () => {
   const schedules = await scheduleChecker();
@@ -9,3 +10,4 @@ const mainProcess = async () => {
 };
 
 setInterval(mainProcess, 60000);
+initialize();
