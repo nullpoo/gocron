@@ -1,8 +1,8 @@
 const fetch = require('node-fetch');
-const config = require('../config.json');
+const { envVars } = require('./configs');
 
 const fetchSchedules = async () => {
-  const response = await fetch(`https://form.goku-nokimochi.com/form/getReservation4.php?shop_id=${config.SHOP_ID}&course_id=${config.COURSE_ID}`, {
+  const response = await fetch(`https://form.goku-nokimochi.com/form/getReservation4.php?shop_id=${envVars.SHOP_ID}&course_id=${envVars.COURSE_ID}`, {
     headers: { 'Referer': 'https://form.goku-nokimochi.com/' },
   });
   const responseText = await response.text();
