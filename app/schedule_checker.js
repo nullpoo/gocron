@@ -1,6 +1,5 @@
-import fetch from 'node-fetch';
-
-import config from '../config.json';
+const fetch = require('node-fetch');
+const config = require('../config.json');
 
 const fetchSchedules = async () => {
   const response = await fetch(`https://form.goku-nokimochi.com/form/getReservation4.php?shop_id=${config.SHOP_ID}&course_id=${config.COURSE_ID}`, {
@@ -35,7 +34,7 @@ const filterFreeSchedules = (schedules) => {
   return freeSchedules;
 };
 
-export const scheduleChecker = async () => {
+const scheduleChecker = async () => {
   const schedules = await fetchSchedules();
   const filteredSchedules = filterFreeSchedules(schedules);
   if (filteredSchedules.length === 0) {
@@ -45,3 +44,5 @@ export const scheduleChecker = async () => {
   }
   return filteredSchedules;
 };
+
+exports.scheduleChecker = scheduleChecker;

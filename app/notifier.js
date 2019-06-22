@@ -1,9 +1,9 @@
-import fetch from 'node-fetch';
-import qs from 'query-string';
+const fetch = require('node-fetch');
+const qs = require('query-string');
 
-import config from '../config.json';
+const config = require('../config.json');
 
-export const notifyForIfttt = async (freeSchedules) => {
+const notifyForIfttt = async (freeSchedules) => {
   try {
     const headers = {
       'Accept': 'application/json',
@@ -27,7 +27,7 @@ export const notifyForIfttt = async (freeSchedules) => {
   }
 };
 
-export const notifyForZapier = async (freeSchedules) => {
+const notifyForZapier = async (freeSchedules) => {
   try {
     const headers = {
       'Accept': 'application/json',
@@ -50,3 +50,6 @@ export const notifyForZapier = async (freeSchedules) => {
     console.warn('Zapier notify fail.');
   }
 };
+
+exports.notifyForIfttt = notifyForIfttt;
+exports.notifyForZapier = notifyForZapier;

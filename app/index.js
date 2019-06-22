@@ -1,5 +1,5 @@
-import { scheduleChecker } from './schedule_checker';
-import { notifyForIfttt, notifyForZapier } from './notifier';
+const { scheduleChecker } = require('./schedule_checker');
+const { notifyForIfttt, notifyForZapier } = require('./notifier');
 
 let notifiedSchedules = [];
 
