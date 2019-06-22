@@ -6,18 +6,15 @@ Auto reserve script for http://goku-nokimochi.com/
 
 ## Setup
 
-Put `./config.json` for directory.
+please install gcloud sdk
+https://cloud.google.com/functions/docs/quickstart?hl=ja
 
-```json
-{
-  "IFTTT_WEBHOOK_URL": IFTTT_WEBHOOK_URL_HERE,
-  "SHOP_ID": SHOP_ID_HERE,
-  "COURSE_ID": COURSE_ID_HERE
-}
-```
+Setup `.env.yaml` with env vars.
+You can deploy to cloud functions.
+`gcloud beta functions deploy mainProcess --runtime nodejs10 --trigger-topic gocron --env-vars-file .env.yaml`
 
 ## Run
 
 Node v9.3.0 or higher.
 
-`npm start`
+`IFTTT_WEBHOOK_URL=hoge SHOP_ID=fuga COURSE_ID=piyo npm start`
