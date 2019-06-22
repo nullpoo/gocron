@@ -1,9 +1,14 @@
-import fetch from 'node-fetch';
-import qs from 'query-string';
+const fetch = require('node-fetch');
+const qs = require('query-string');
 
-import config from '../config.json';
+const { envVars } = require('./configs');
 
-export const notifyForIfttt = async (freeSchedules) => {
+const notifyForIfttt = async (freeSchedules) => {
+  if (!envVars.IFTTT_WEBHOOK_URL) {
+    console.log('There is no IFTTT_WEBHOOK_URL.');
+    return;
+  }
+
   try {
     const headers = {
       'Accept': 'application/json',
@@ -12,13 +17,13 @@ export const notifyForIfttt = async (freeSchedules) => {
     const body = {
       value1: JSON.stringify(freeSchedules),
     };
-    const response = await fetch(config.IFTTT_WEBHOOK_URL, {
+    const response = await fetch(envVars.IFTTT_WEBHOOK_URL, {
       method: 'POST',
       headers,
       body: qs.stringify(body),
     });
     if (response.ok) {
-      console.log('IFTTT notify success.')
+      console.log('IFTTT notify success.');
     } else {
       console.warn('IFTTT notify fail.');
     }
@@ -27,7 +32,12 @@ export const notifyForIfttt = async (freeSchedules) => {
   }
 };
 
-export const notifyForZapier = async (freeSchedules) => {
+const notifyForZapier = async (freeSchedules) => {
+  if (!envVars.ZAPIER_WEBHOOK_URL) {
+    console.log('There is no ZAPIER_WEBHOOK_URL.');
+    return;
+  }
+
   try {
     const headers = {
       'Accept': 'application/json',
@@ -36,13 +46,13 @@ export const notifyForZapier = async (freeSchedules) => {
     const body = {
       value1: JSON.stringify(freeSchedules),
     };
-    const response = await fetch(config.ZAPIER_WEBHOOK_URL, {
+    const response = await fetch(envVars.ZAPIER_WEBHOOK_URL, {
       method: 'POST',
       headers,
       body: qs.stringify(body),
     });
     if (response.ok) {
-      console.log('Zapier notify success.')
+      console.log('Zapier notify success.');
     } else {
       console.warn('Zapier notify fail.');
     }
@@ -50,3 +60,6 @@ export const notifyForZapier = async (freeSchedules) => {
     console.warn('Zapier notify fail.');
   }
 };
+
+exports.notifyForIfttt = notifyForIfttt;
+exports.notifyForZapier = notifyForZapier;
