@@ -13,4 +13,4 @@ const mainProcess = async () => {
   }
 };
 
-setInterval(mainProcess, 60000);
+exports.mainProcess = mainProcess;
